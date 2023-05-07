@@ -1,0 +1,32 @@
+/ {
+    buttons {
+        compatible = "gpio-keys";
+        button0: button_0 {
+            gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "Push button switch 0";
+        };
+        button1: button_1 {
+            gpios = <&gpio1 8 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "Push button switch 1";
+        };
+        button2: button_2 {
+            gpios = <&gpio0 24 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "Push button switch 2";
+        };
+        button3: button_3 {
+            gpios = <&gpio0 25 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "Push button switch 3";
+        };
+    };
+};
+&uart0 {
+    compatible = "nordic,nrf-uarte";
+    status = "okay";
+    current-speed = <115200>;
+    tx-pin = <6>;
+    rx-pin = <8>;
+    rx-pull-up;
+    rts-pin = <5>;
+    cts-pin = <4>;
+    cts-pull-up;
+};

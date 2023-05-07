@@ -1,0 +1,33 @@
+sample:
+  name: HomeKit Lock
+  description: HomeKit Lock sample
+tests:
+  sample.homekit.lock.ble.nfc.debug:
+    build_only: true
+    extra_args: NFC=y DEBUG=y
+    integration_platforms:
+      - nrf52833dk_nrf52833
+    platform_allow: nrf52833dk_nrf52833 nrf21540dk_nrf52840
+    tags: bluetooth ci_build
+  sample.homekit.lock.ble.qrc.ndfu.release:
+    build_only: true
+    extra_args: NORDIC_DFU=y
+    integration_platforms:
+      - nrf5340dk_nrf5340_cpuapp
+    platform_allow: nrf52840dk_nrf52840 nrf5340dk_nrf5340_cpuapp
+    tags: bluetooth ci_build
+  sample.homekit.lock.multiprotocol.mtd.eui.nfc.hdfu.release:
+    build_only: true
+    extra_args: THREAD=y MTD=y EUI64=y NFC=y
+    integration_platforms:
+      - nrf52840dk_nrf52840
+      - nrf5340dk_nrf5340_cpuapp
+    platform_allow: nrf52840dk_nrf52840 nrf21540dk_nrf52840 nrf5340dk_nrf5340_cpuapp
+    tags: bluetooth thread ci_build
+  sample.homekit.lock.multiprotocol.mtd.eui.nfc.ndfu.debug:
+    build_only: true
+    extra_args: THREAD=y MTD=y EUI64=y NFC=y NORDIC_DFU=y DEBUG=y
+    integration_platforms:
+      - nrf5340dk_nrf5340_cpuapp
+    platform_allow: nrf52840dk_nrf52840 nrf5340dk_nrf5340_cpuapp
+    tags: bluetooth thread ci_build

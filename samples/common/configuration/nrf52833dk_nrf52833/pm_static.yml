@@ -1,0 +1,4 @@
+settings_storage:
+  address: 0x7e000
+  size: 0x2000
+  region: flash_primary

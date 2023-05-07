@@ -1,0 +1,32 @@
+sample:
+  name: HomeKit Light Bulb
+  description: HomeKit Light Bulb sample
+tests:
+  sample.homekit.light_bulb.ble.qrc.release:
+    build_only: true
+    integration_platforms:
+      - nrf52833dk_nrf52833
+    platform_allow: nrf52833dk_nrf52833 nrf21540dk_nrf52840
+    tags: bluetooth ci_build
+  sample.homekit.light_bulb.ble.nfc.hdfu.debug:
+    build_only: true
+    extra_args: NFC=y DEBUG=y
+    integration_platforms:
+      - nrf52840dk_nrf52840
+    platform_allow: nrf52840dk_nrf52840 nrf5340dk_nrf5340_cpuapp
+    tags: bluetooth ci_build
+  sample.homekit.light_bulb.multiprotocol.ftd.eui.nfc.btp.hdfu.debug:
+    build_only: true
+    extra_args: THREAD=y EUI64=y NFC=y CONFIG_HAP_BT_ABSTRACT_LAYER=y DEBUG=y
+    integration_platforms:
+      - nrf52840dk_nrf52840
+    platform_allow: nrf52840dk_nrf52840 nrf21540dk_nrf52840 nrf5340dk_nrf5340_cpuapp
+    tags: bluetooth thread ci_build
+  sample.homekit.light_bulb.multiprotocol.ftd.eui.qrc.ndfu.release:
+    build_only: true
+    extra_args: THREAD=y EUI64=y NORDIC_DFU=y
+    integration_platforms:
+      - nrf52840dk_nrf52840
+      - nrf5340dk_nrf5340_cpuapp
+    platform_allow: nrf52840dk_nrf52840 nrf5340dk_nrf5340_cpuapp
+    tags: bluetooth thread ci_build

@@ -1,0 +1,62 @@
+{
+  "XILC": {
+    "settings_base": 1040384,
+    "setup_id": "XILC",
+    "salt": "5d07087638ba91ef4f115234b961fb32",
+    "vkey": "fd494c2d828ce31252d7fa298f7327bfdf40b8f7ab1eee74fd3bb07526675e944b461a9a67d18f4f5fdf260f1fb222f0c4bb5cfe036daad951d0b1c79af092144d4c61ba41eca6b5c66fdf1ccf44da29ee0757898736f0d1deaf9d936466f18c9f724db78b11765cb4c4e22eb75964a5d72132c40017871d3e3162a579cf7518c67f559a4b54b1f2d18b084850954a9831b2d57adf6c0a34c6127b91dc4dae72c0c349e8dceb8a44adcd0b382508e90672805b211b9c56d16305934613effbd5596515210c9cf52af328e1882fb6306bc77ed50cb9b7cdf7ac931b7ed0f98792ee1970a653d8dba24c67da87744c722b609615e44fad997138f1eff449bfe773ce757e7024f7dac07c7eb03275fb0f75db5524d4575c23c62a32176ac63bb40386b29aeaa0a7f3c349c51a5cb87050276a9b863759b95e3e0793e05521dfa2ace425866d1f655ed021da72fd748298191bbe4b6cbf5cfaddb614d5061de187e05a28e25f2c8ebf2bb277a91704e97937812d0a6d73a7b6347e5e6bedba634fba",
+    "setup_code": "450-28-128",
+    "qr_code_support": false,
+    "hex_file": "C:\\Work\\ncs\\v2.3.0\\homekit\\samples\\light_bulb\\_generated\\provisioned_XILC_450-28-128.hex",
+    "timestamp": "2023-04-06T14:40:56.794797",
+    "setup_payload": "X-HM://0E6B42ASGXILC0YJH2CJFPA4DMRWGSG",
+    "accessory_category_id": 5,
+    "ble_support": true,
+    "thread_support": false,
+    "nfc_support": true
+  },
+  "0JXB": {
+    "settings_base": 1040384,
+    "setup_id": "0JXB",
+    "salt": "d67417b336d8434a8e279d7ab3f9068e",
+    "vkey": "0c9776ea695ebc23bf281cea21baf79a817cabe878100982c9c4f9f06f15789c862c360d223c953f6a94868cc12b965b1b19020fc0f5f0d6b7a2b72185a73704f34c46ca93d73cd5452eee83b2730458f509b5d2158c5ffcad2171e604b41cb7312aeda73223a8dfeddb118e654a124a6c71aeda360199ad25ee5ad85472d445eaeef4b816ff06fc233f9d47df9a0493c72500f782779e9b4f2f9bdc94f39459b046d7e7a62c5cd0ee2a712f7eb37f2a234b485e738a87304f8c2873f0cc4e122261573cee406114623e83b80dc609623cbf675dbd9f09981d50c59e7af0db140a8352dc6c7446a947e2655f8415f424658c3b5148f216a7c9817f76c5e061e0cbe7db48738334040b9497a2bfff9e9497e18ee62436fc1d281fb50e5c9e18dac2c55cecdfecc3f073af0d59e29b0bdf7b34d3953f01e040bfdcda5d41afa95d14cbf0d3b66ca355be901d41cb9caadffc5e895fb686aefb7a127861dd8784158f50e2bd6804a7c136b127c586b499bb40f826fae27c74f5d0cee5229ced313c",
+    "setup_code": "124-77-348",
+    "qr_code_support": false,
+    "hex_file": "C:\\Work\\ncs\\v2.3.0\\homekit\\samples\\light_bulb\\_generated\\provisioned_0JXB_124-77-348.hex",
+    "timestamp": "2023-04-06T14:47:09.760512",
+    "setup_payload": "X-HM://0E6AKOMG40JXB0YJH2CJFPA4DMRWGSG",
+    "accessory_category_id": 5,
+    "ble_support": true,
+    "thread_support": false,
+    "nfc_support": true
+  },
+  "XH5O": {
+    "settings_base": 1040384,
+    "setup_id": "XH5O",
+    "salt": "baf0b7e345140a01d965d2f233b2fe10",
+    "vkey": "1c46e7c65919c9239e5d7a6d97c5384391887e8c330f66f5226a3c5973e8f660943dbc6f552f85fdcb777026c27a021323b02aefa81a8d7190e18f8c23aa70d19fefd6ecd5df9030e8f57003e3a34551f8866f48be52402bdb762a52a6f036c2b9e7c52dfa9d61336888474e4962591c51738b1771d01896956ab76b51942f2579a571cb7884775c8672de51bfa8c49aa562598644f8d6bdaecd05a2f820e55c4eee166457878cf40c49f1bbdc8944962ab1bc81b3994163f48bda0fb120ae6582dee53c8ad43e1eb3d686f83624920486d529264eefadb9f9062ba246488ea2dd767fc9d7e072f85803dcc140a7c23303f8acd47053d7080e7252be6288f89bd6fd426dc7878f80bb2b75862625d93917aa9be9030b83ce31de1be2577d91e39aec83041a48eec4200c26828e0314a347da390eea4fe50beaf8ad9945a3772a961eeef6c35f082b80f3e60b3119aafed14e802d59b4e3b4bd0c627654d26dfc5a50e4695715c15d9b4651e8f3d2eaee2c781952c5a3073bade3e79e80a0b644",
+    "setup_code": "293-15-108",
+    "qr_code_support": false,
+    "hex_file": "C:\\Work\\ncs\\v2.3.0\\homekit\\samples\\light_bulb\\_generated\\provisioned_XH5O_293-15-108.hex",
+    "timestamp": "2023-04-06T14:51:33.421132",
+    "setup_payload": "X-HM://0E6AUPIJOXH5O0YJH2CJFPA4DMRWGSG",
+    "accessory_category_id": 5,
+    "ble_support": true,
+    "thread_support": false,
+    "nfc_support": true
+  },
+  "U699": {
+    "settings_base": 1040384,
+    "setup_id": "U699",
+    "salt": "19dd8e451282af73d6fd7488075c0d4b",
+    "vkey": "98d56304ba84c1eda2ff3a5537b3a60606c580aac2bf0fa65852adf7106a85b98ab0586c0547b55fa2357622efd872fe41b8ece26c65174e54c634bf8ca375bdb17adacf873731931a5fbc1eac8b5fada2f7a7101629da83481b0e168abc8a7074cda2d04feb7e89caaf8e8493ff44cf3337cc9e961842b9b3aaf463c24aacbd53f4b614bc8e2924ba0440c19253c2d85f49c14dd7fe8c07d00ea8f7ac4a3742b28c9e85042a710f5a67223f3c49c0f9fe455bccbd318ff07e7db4b065a58fc87a62b11ceeb22703ab0701d32f57a740e250d7929adf1e0bb25192ac30fd02ad92c66d913ee1ec80c3cc0ae94c821f9cd5a8129e4d37d6972f52f3dd82e8b70dab8bb01d6aba58717c95b9da41118d2a92a20bc30d65d029588a6c3593b9bb1d17f5ece9c42db1f41f8d62fbaae9aa23316d24306af137d9986716e575128bcaab7c01d80bfc70a8621c18a7a167ba82ffc4afc2fb4e0bed76ccea90fec1bc47909974190431386553365174ce7444ea2872f091a49a01f3bae4a7a842fddec7",
+    "setup_code": "371-45-955",
+    "qr_code_support": false,
+    "hex_file": "C:\\Work\\ncs\\v2.3.0\\homekit\\samples\\light_bulb\\_generated\\provisioned_U699_371-45-955.hex",
+    "timestamp": "2023-04-18T09:53:08.342036",
+    "setup_payload": "X-HM://0E6AZDCV7U6990YJH2CJFPA4DMRWGSG",
+    "accessory_category_id": 5,
+    "ble_support": true,
+    "thread_support": false,
+    "nfc_support": true
+  }
+}

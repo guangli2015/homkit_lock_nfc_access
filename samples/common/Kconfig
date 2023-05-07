@@ -1,0 +1,83 @@
+#
+# Copyright (c) 2021, Nordic Semiconductor ASA
+# All rights reserved.
+#
+# Use in source and binary forms, redistribution in binary form only, with
+# or without modification, are permitted provided that the following conditions
+# are met:
+#
+# 1. Redistributions in binary form, except as embedded into a Nordic
+#    Semiconductor ASA integrated circuit in a product or a software update for
+#    such product, must reproduce the above copyright notice, this list of
+#    conditions and the following disclaimer in the documentation and/or other
+#    materials provided with the distribution.
+#
+# 2. Neither the name of Nordic Semiconductor ASA nor the names of its
+#    contributors may be used to endorse or promote products derived from this
+#    software without specific prior written permission.
+#
+# 3. This software, with or without modification, must only be used with a Nordic
+#    Semiconductor ASA integrated circuit.
+#
+# 4. Any software provided in binary form under this license must not be reverse
+#    engineered, decompiled, modified and/or disassembled.
+#
+# THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+# TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+
+config HAP_DEBUG_SETUP_INFO
+	bool "Debug setup info [EXPERIMENTAL]"
+	select EXPERIMENTAL
+	help
+	  "Enable debug accessory setup, no need to provision accessory.
+	  Values of Setup Code, joiner passphrase etc.
+	  defined in debug_accessory_setup source files."
+
+config HAP_STACK_SIZE
+	int  "Size of stack for HomeKit thread"
+	default 8192
+	help
+	  Stack size of HomeKit thread in Zephyr RTOS.
+
+config HOMEKIT_NORDIC_DFU
+	bool "enable DFU via SMP BLE"
+	default n
+	depends on MCUMGR && MCUMGR_CMD_IMG_MGMT && BT_SMP && MCUMGR_SMP_BT && MCUMGR_CMD_OS_MGMT
+	help
+	  Enable SMP via BLE for Homekit application
+
+config BLE_LED_INDEX
+	int "Index of BLE status LED"
+	default 3
+	help
+	  Index of BLE status LED, default is DK_LED3
+
+config THREAD_LED_INDEX
+	int "Index of Thread status LED"
+	default 4
+	help
+	  Index of Thread status LED, default is DK_LED4
+
+config DFU_LED_INDEX
+	int "Index of DFU status LED"
+	default 2
+	help
+	 Index of DFU status LED, default is DK_LED2
+
+config OPENTHREAD_DEFAULT_TX_POWER
+	int "Set the default 802.15.4 output power (dBm)"
+	range -40 20
+	default 8
+	help
+	  Use this setting to set the default Thread (802.15.4) output power.
+	  This value has a unit in dBm and represents the Tx power at Antenna port.

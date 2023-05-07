@@ -1,0 +1,5 @@
+ #include <zephyr/dt-bindings/ipc_service/static_vrings.h>
+
+&ipc0 {
+	zephyr,priority = <0 PRIO_COOP>;
+};
