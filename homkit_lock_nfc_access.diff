@@ -1,0 +1,141 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 31928f3..d26285b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -82,6 +82,10 @@ if(CONFIG_HOMEKIT)
+     target_compile_definitions(homekit_interface INTERFACE
+       HAVE_NFC=1
+       HAP_FEATURE_NFC=1
++	  HAVE_NFC_ACCESS=1
++	  HAP_FEATURE_NFC_ACCESS=1
++	  HAVE_KEY_EXPORT=1
++	  HAP_FEATURE_KEY_EXPORT=1
+     )
+   else()
+     target_compile_definitions(homekit_interface INTERFACE
+diff --git a/samples/common/configuration/nrf52840dk_nrf52840/nrf52840dk_nrf52840.overlay b/samples/common/configuration/nrf52840dk_nrf52840/nrf52840dk_nrf52840.overlay
+index 0357cfa..994ba2f 100644
+--- a/samples/common/configuration/nrf52840dk_nrf52840/nrf52840dk_nrf52840.overlay
++++ b/samples/common/configuration/nrf52840dk_nrf52840/nrf52840dk_nrf52840.overlay
+@@ -11,6 +11,22 @@
+ &pwm0 {
+ 	status = "disabled";
+ };
++&spi0 {
++	compatible = "nordic,nrf-spi";
++	status = "okay";
++	cs-gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
++
++	pinctrl-0 = <&spi0_default_alt>;
++	pinctrl-1 = <&spi0_sleep_alt>;
++	pinctrl-names = "default", "sleep";
++	st25r3911b@0 {
++		compatible = "st,st25r3911b";
++		reg = <0>;
++		spi-max-frequency = <4000000>;
++		irq-gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
++		led-nfca-gpios = <&gpio0 29 GPIO_ACTIVE_HIGH>;
++	};
++};
+ &spi1 {
+ 	status = "disabled";
+ };
+@@ -20,3 +36,21 @@
+ &usbd {
+ 	status = "disabled";
+ };
++&pinctrl {
++	spi0_default_alt: spi0_default_alt {
++		group1 {
++			psels = <NRF_PSEL(SPIM_SCK, 1, 15)>,
++				<NRF_PSEL(SPIM_MOSI, 1, 13)>,
++				<NRF_PSEL(SPIM_MISO, 1, 14)>;
++		};
++	};
++
++	spi0_sleep_alt: spi0_sleep_alt {
++		group1 {
++			psels = <NRF_PSEL(SPIM_SCK, 1, 15)>,
++				<NRF_PSEL(SPIM_MOSI, 1, 13)>,
++				<NRF_PSEL(SPIM_MISO, 1, 14)>;
++			low-power-enable;
++		};
++	};
++};
+diff --git a/samples/common/src/hap.c b/samples/common/src/hap.c
+index 24a713d..c43da74 100644
+--- a/samples/common/src/hap.c
++++ b/samples/common/src/hap.c
+@@ -70,7 +70,7 @@ void hap_enable(void* arg1, void* arg2, void* arg3) {
+         HAPFatalError();
+     }
+ #endif
+-
++HAPLogInfo(&kHAPLog_Default, "lg************************************");
+     // Start HomeKit.
+     void* ctx = NULL;
+     (void) AdkRunApplication(ctx);
+diff --git a/samples/lock/CMakeLists.txt b/samples/lock/CMakeLists.txt
+index cdcd7a4..2feca22 100644
+--- a/samples/lock/CMakeLists.txt
++++ b/samples/lock/CMakeLists.txt
+@@ -45,6 +45,7 @@ find_package(Zephyr HINTS $ENV{ZEPHYR_BASE})
+ project(homekit_lock)
+ 
+ target_sources(app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/app.c)
++target_sources(app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/tag_reader.c)
+ target_sources(app PRIVATE ${COMMON_ROOT}/src/main.c)
+ target_sources(app PRIVATE ${COMMON_ROOT}/src/hap.c)
+ 
+diff --git a/samples/lock/prj.conf b/samples/lock/prj.conf
+index 684d8b9..7bd5190 100644
+--- a/samples/lock/prj.conf
++++ b/samples/lock/prj.conf
+@@ -62,3 +62,14 @@ CONFIG_UART_CONSOLE=n
+ 
+ # Stacks
+ CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=4492
++
++
++#CONFIG_SPI=y
++
++CONFIG_ST25R3916_LIB=y
++CONFIG_POLL=y
++
++
++
++CONFIG_ST25R3916_LIB_LOG_LEVEL_INF=y
++CONFIG_LOG_DEFAULT_LEVEL=4
+\ No newline at end of file
+diff --git a/samples/lock/prj_debug.conf b/samples/lock/prj_debug.conf
+index 6994fc7..906e72a 100644
+--- a/samples/lock/prj_debug.conf
++++ b/samples/lock/prj_debug.conf
+@@ -84,3 +84,13 @@ CONFIG_RESET_ON_FATAL_ERROR=n
+ 
+ # Stacks
+ CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=4492
++
++CONFIG_SPI=y
++
++CONFIG_ST25R3916_LIB=y
++CONFIG_POLL=y
++
++
++
++CONFIG_ST25R3916_LIB_LOG_LEVEL_INF=n
++CONFIG_LOG_DEFAULT_LEVEL=4
+\ No newline at end of file
+diff --git a/samples/lock/src/app.c b/samples/lock/src/app.c
+index fbcee27..18bde48 100644
+--- a/samples/lock/src/app.c
++++ b/samples/lock/src/app.c
+@@ -72,7 +72,7 @@
+ //   5. The initialization of the accessory state.
+ //
+ //   6. Callbacks that notify the server in case their associated value has changed.
+-
++ 
+ #include <string.h>
+ 
+ #include "HAP+API.h"
